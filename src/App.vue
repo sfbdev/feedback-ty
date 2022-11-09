@@ -1,5 +1,7 @@
 <template>
-  <div id="app">Hello World</div>
+  <div id="app">
+    <app-feedback />
+  </div>
 </template>
 
 <script>
