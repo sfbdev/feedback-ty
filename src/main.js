@@ -1,11 +1,9 @@
 import Vue from "vue";
 import App from "./App.vue";
 import axios from "axios";
-// import VueAxios from "vue-axios";
-import { VueAxios } from "./config/axios.js";
+import VueAxios from "vue-axios";
 
 import "@/config/component";
-import "@/config/globalMixin";
 
 Vue.use(VueAxios, axios);
 

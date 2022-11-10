@@ -3,7 +3,7 @@ import FeedbackButton from "./components/Feedback.vue";
 function install(Vue, options) {
   if (install.installed) return;
   install.installed = true;
-  Vue.prototype.$options = options;
+  Vue.prototype.$userOptions = options;
   Vue.component("feedback-ty", FeedbackButton);
 }
 

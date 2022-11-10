@@ -1,6 +1,10 @@
 <template>
   <div class="feedback">
-    <div class="feedback-button" @click="toggleFeedbackModal()">
+    <div
+      class="feedback-button"
+      @click="toggleFeedbackModal()"
+      v-if="!showFeeadbackModal"
+    >
       <span>Send Feedback</span>
     </div>
     <div
@@ -13,7 +17,7 @@
         class="feedback-modal-wrapper"
         :style="{ width: width, height: height }"
       >
-        <div class="close-button" @click="toggleFeedbackModal()">
+        <div class="close-button" @click.stop="toggleFeedbackModal()">
           <span>X</span>
         </div>
 
@@ -31,6 +35,11 @@
         </form>
         <div class="success-area" v-else>
           <span>We have got your feedback!</span>
+        </div>
+        <div class="errors" v-if="errors.length > 0">
+          <span v-for="(error, index) in errors" :key="index">
+            {{ error.msg }}
+          </span>
         </div>
       </div>
     </div>
@@ -58,6 +67,7 @@ export default {
   data() {
     return {
       showFeeadbackModal: false,
+      errors: [],
       success: false,
       model: {
         message: null,
@@ -66,7 +76,7 @@ export default {
   },
   computed: {
     options() {
-      return this.$options;
+      return this.$userOptions || null;
     },
   },
   mounted() {},
@@ -83,15 +93,18 @@ export default {
 
     feedbackAction() {
       let payload = {
-        clientId: 4,
+        clientId: this.options.clientId,
         text: this.model.message,
       };
-      this.axios.post("http://localhost:3000/feedbacks", payload).then(() => {
-        this.success = true;
-        this.model.message = null;
-      });
-
-      console.log("p", payload);
+      this.axios
+        .post("https://feedback-ty-backend.onrender.com/feedbacks", payload)
+        .then(() => {
+          this.success = true;
+          this.model.message = null;
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
     },
   },
 };
@@ -187,12 +200,9 @@ export default {
         width: 100%;
         border-radius: 4px;
         cursor: pointer;
+        background-color: #f27a1a;
+        color: #ffffff;
       }
-    }
-    .submit-button {
-      background-color: #243447;
-      background-color: #f27a1a;
-      color: #ffffff;
     }
 
     .success-area {
@@ -208,6 +218,16 @@ export default {
         font-size: 24px;
         font-weight: 700;
       }
+    }
+
+    .errors {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      color: red;
+      font-weight: 500;
+      margin-bottom: 4px;
     }
   }
 
