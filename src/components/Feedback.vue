@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="feedback-button" @click="toggleFeedbackModal()">
-      <span class="icon-call-in"></span>
+      <span>Send Feedback</span>
     </div>
     <div
       :class="dark ? 'dark' : 'light'"
@@ -14,7 +14,7 @@
         :style="{ width: width, height: height }"
       >
         <div class="close-button" @click="toggleFeedbackModal()">
-          <span class="icon-close"></span>
+          <span>X</span>
         </div>
 
         <form class="feedback-form" v-if="!success">
@@ -30,7 +30,6 @@
           </button>
         </form>
         <div class="success-area" v-else>
-          <span class="icon-check"></span>
           <span>We have got your feedback!</span>
         </div>
       </div>
@@ -86,12 +85,12 @@ export default {
         clientId: 4,
         text: this.model.message,
       };
-      console.log("p", payload);
-      this.sendFeedback(payload).then((res) => {
-        console.log(res);
+      this.axios.post("http://localhost:3000/feedbacks", payload).then(() => {
         this.success = true;
         this.model.message = null;
       });
+
+      console.log("p", payload);
     },
   },
 };
@@ -103,8 +102,10 @@ export default {
   bottom: 30px;
   right: 30px;
   background-color: #f7f7f7;
-  border-radius: 100%;
-  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid #00000040;
+  font-size: 12px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -120,8 +121,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 1000;
   .feedback-modal-wrapper {
     position: relative;
@@ -137,10 +138,13 @@ export default {
       position: absolute;
       right: 16px;
       top: 16px;
+      width: 32px;
+      height: 32px;
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 100%;
+      border: 1px solid #00000040;
       padding: 6px;
       cursor: pointer;
       img {
