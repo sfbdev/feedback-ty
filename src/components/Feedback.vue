@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="feedback-button" @click="toggleFeedbackModal()">
-      <img src="../assets/chat.svg" alt="feedback" />
+      <img src="../../public/chat.svg" alt="feedback" />
     </div>
     <div
       :class="dark ? 'dark' : 'light'"
@@ -14,7 +14,7 @@
         :style="{ width: width, height: height }"
       >
         <div class="close-button" @click="toggleFeedbackModal()">
-          <img src="../assets/close.svg" alt="" />
+          <img src="../../public/close.svg" alt="" />
         </div>
 
         <form class="feedback-form" v-if="!success">
@@ -30,7 +30,7 @@
           </button>
         </form>
         <div class="success-area" v-else>
-          <img src="../assets/check.svg" alt="check" />
+          <img src="../../public/check.svg" alt="check" />
           <span>We have got your feedback!</span>
         </div>
       </div>
@@ -64,6 +64,11 @@ export default {
         message: null,
       },
     };
+  },
+  computed: {
+    testId() {
+      return this.$furkan || "hi";
+    },
   },
   mounted() {},
   methods: {
