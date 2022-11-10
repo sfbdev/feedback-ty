@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="feedback-button" @click="toggleFeedbackModal()">
-      <img src="../../public/chat.svg" alt="feedback" />
+      <span class="icon-call-in"></span>
     </div>
     <div
       :class="dark ? 'dark' : 'light'"
@@ -14,7 +14,7 @@
         :style="{ width: width, height: height }"
       >
         <div class="close-button" @click="toggleFeedbackModal()">
-          <img src="../../public/close.svg" alt="" />
+          <span class="icon-close"></span>
         </div>
 
         <form class="feedback-form" v-if="!success">
@@ -30,7 +30,7 @@
           </button>
         </form>
         <div class="success-area" v-else>
-          <img src="../../public/check.svg" alt="check" />
+          <span class="icon-check"></span>
           <span>We have got your feedback!</span>
         </div>
       </div>

@@ -1,17 +1,25 @@
 import FeedbackButton from "./components/Feedback.vue";
 
-const Feedback = {
-  install(Vue) {
-    // Let's register our component globally
-    // https://vuejs.org/v2/guide/components-registration.html
+function install(Vue) {
+  if (install.installed) return;
+  install.installed = true;
+  Vue.component("vue-feedback-button", FeedbackButton);
+}
 
-    Vue.component("feedback-button", FeedbackButton);
-  },
+const plugin = {
+  install,
 };
 
-// Automatic installation if Vue has been added to the global scope.
-if (typeof window !== "undefined" && window.Vue) {
-  window.Vue.use(Feedback);
+let GlobalVue = null;
+if (typeof window !== "undefined") {
+  GlobalVue = window.Vue;
+} else if (typeof global !== "undefined") {
+  GlobalVue = global.vue;
 }
+if (GlobalVue) {
+  GlobalVue.use(plugin);
+}
+
+FeedbackButton.install = install;
 
 export default FeedbackButton;

@@ -5,7 +5,6 @@ import axios from "axios";
 // import VueAxios from "vue-axios";
 import { VueAxios } from "./config/axios.js";
 
-
 import "@/config/component";
 import "@/config/globalMixin";
 
