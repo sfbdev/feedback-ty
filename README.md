@@ -1,6 +1,6 @@
 # ty-feedback-list
 
-ty-feedback modülünden gelen feedbackleri görmek için geliştirilmiştir.
+Live demo: https://feedback-ty.netlify.app/
 
 ## Proje kurulumu
 
