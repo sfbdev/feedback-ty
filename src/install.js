@@ -4,7 +4,7 @@ function install(Vue, options) {
   if (install.installed) return;
   install.installed = true;
   Vue.prototype.$userOptions = options;
-  Vue.component("feedback-ty", FeedbackButton);
+  Vue.component("ty-feedback", FeedbackButton);
 }
 
 const plugin = {

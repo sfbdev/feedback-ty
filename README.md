@@ -1,6 +1,6 @@
-# feedback-ty-list
+# ty-feedback-list
 
-Feedback-Ty modülünden gelen feedbackleri görmek için geliştirilmiştir.
+ty-feedback modülünden gelen feedbackleri görmek için geliştirilmiştir.
 
 ## Proje kurulumu
 
@@ -28,7 +28,7 @@ yarn lint
 
 ## Basic Usage
 
-Öncelikle **https://feedback-ty-list.netlify.app/register** adresinden client id alabilirsiniz.
+Öncelikle **https://ty-feedback-list.netlify.app/register** adresinden client id alabilirsiniz.
 
 ```
 Your component
@@ -43,8 +43,13 @@ Your component
 
 main.js
 
-import FeedbackTy from "feedback-ty"
+import FeedbackTy from "ty-feedback"
 Vue.use(FeedbackTy, {clientId: yourClientID})
 
 ```
+
+Test user için
+
+test2@test.com
+123123
 
