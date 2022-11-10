@@ -108,6 +108,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 99999999;
   img {
     width: 32px;
   }
