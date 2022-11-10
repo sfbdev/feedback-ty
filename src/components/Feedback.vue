@@ -110,9 +110,7 @@ export default {
   align-items: center;
   justify-content: center;
   z-index: 99999999;
-  img {
-    width: 32px;
-  }
+  color: #000000 !important;
 }
 .feedback-modal {
   position: absolute;
@@ -146,10 +144,8 @@ export default {
       border-radius: 100%;
       border: 1px solid #00000040;
       padding: 6px;
+      color: #000000 !important;
       cursor: pointer;
-      img {
-        width: 32px;
-      }
     }
 
     .feedback-form {
