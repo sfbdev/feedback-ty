@@ -2,7 +2,7 @@ import axios from "axios";
 import VueAxios from "../utils/vueAxios.plugin";
 
 const service = axios.create({
-  baseURL: "http://localhost:3000/",
+  baseURL: "https://feedback-ty-backend.onrender.coms",
   timeout: 15000,
 });
 

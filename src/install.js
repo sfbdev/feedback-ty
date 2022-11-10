@@ -1,9 +1,10 @@
 import FeedbackButton from "./components/Feedback.vue";
 
-function install(Vue) {
+function install(Vue, options) {
   if (install.installed) return;
   install.installed = true;
-  Vue.component("vue-feedback-button", FeedbackButton);
+  Vue.prototype.$options = options;
+  Vue.component("feedback-ty", FeedbackButton);
 }
 
 const plugin = {

@@ -65,8 +65,8 @@ export default {
     };
   },
   computed: {
-    testId() {
-      return this.$furkan || "hi";
+    options() {
+      return this.$options;
     },
   },
   mounted() {},
