@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="feedback">
     <div class="feedback-button" @click="toggleFeedbackModal()">
       <span>Send Feedback</span>
     </div>
@@ -75,6 +75,7 @@ export default {
       this.showFeeadbackModal = !this.showFeeadbackModal;
       this.success = false;
       this.model.message = null;
+      document.body.classList.toggle("ty-overflow-hidden");
     },
     ...mapActions({
       sendFeedback: "sendFeedback",
@@ -96,7 +97,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.ty-overflow-hidden {
+  overflow: hidden;
+}
 .feedback-button {
   position: fixed;
   bottom: 30px;
